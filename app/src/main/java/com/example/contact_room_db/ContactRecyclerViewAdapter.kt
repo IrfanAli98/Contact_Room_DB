@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.contact_room_db.Interface.OnItemClickListener
 import com.example.contact_room_db.databinding.LayoutCustomViewBinding
 
-class ContactRecyclerViewAdapter(val context: Context,private var contactList: List<Contact>,private val onItemClickListener: OnItemClickListener):Adapter<ContactRecyclerViewAdapter.ContactViewHolder>() {
+class ContactRecyclerViewAdapter(private val context: Context, private var contactList: List<Contact>, private val onItemClickListener: OnItemClickListener):Adapter<ContactRecyclerViewAdapter.ContactViewHolder>() {
     inner class ContactViewHolder(var layoutCustomViewBinding: LayoutCustomViewBinding): RecyclerView.ViewHolder(layoutCustomViewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
@@ -25,7 +25,7 @@ class ContactRecyclerViewAdapter(val context: Context,private var contactList: L
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        var contacts = contactList.get(position)
+        var contacts = contactList[position]
         val requestPermissionList = arrayOf(Manifest.permission.CALL_PHONE)
         val REQUEST_CODE = 1
 

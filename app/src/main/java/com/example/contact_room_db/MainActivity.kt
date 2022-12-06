@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var dataBinding: ActivityMainBinding
     private lateinit var factory: Contact_Factory
     private lateinit var viewModel: Contact_ViewModel
+    private lateinit var adapter: ContactRecyclerViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -30,10 +31,10 @@ class MainActivity : AppCompatActivity() {
 
         dataBinding.recyclerView.layoutManager  = LinearLayoutManager(this)
         viewModel.contact.observe(this, Observer {
-            val adapter= ContactRecyclerViewAdapter(this, it, object : OnItemClickListener{
+            adapter= ContactRecyclerViewAdapter(this, it, object : OnItemClickListener{
                 override fun onItemClick(contact: Contact, position: Int) {
                     val intent = Intent(this@MainActivity, Update_Contact::class.java)
-                    intent.putExtra("Notes", Gson().toJson(contact))
+                    intent.putExtra(Keys.CONTACT, Gson().toJson(contact))
                     startActivity(intent)
                 }
 

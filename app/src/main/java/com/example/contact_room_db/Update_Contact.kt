@@ -49,7 +49,8 @@ class Update_Contact : AppCompatActivity() {
             R.id.ed_edit -> {
                 dataBinding.etEdFname.isFocusableInTouchMode = true
                 dataBinding.etEdLname.isFocusableInTouchMode = true
-                dataBinding.etEdNumber.visibility = View.VISIBLE
+                dataBinding.etEdNumber.isFocusableInTouchMode = true
+                dataBinding.btnUpdate.visibility = View.VISIBLE
 
             }
             R.id.ed_delete -> {
